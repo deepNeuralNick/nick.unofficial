@@ -159,7 +159,7 @@ function createSparks(event) {
  * Money Signs Green Spark Animation
  */
 function createMoneySparks(event) {
-    const moneyEmojis = ['💵', '💸', '💰', '💲', '🤑',];
+    const moneyEmojis = ['💵', '💸', '💰', '💲', '🤑'];
     const numSparks = 15;
     
     // Get the click position
