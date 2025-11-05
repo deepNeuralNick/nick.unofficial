@@ -1258,3 +1258,60 @@ body {
     border-top: 1px solid rgba(255,255,255,0.2);
     margin: 2rem 0;
 }
+
+/* Magic Wand Animation */
+.magic-wand {
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.2s ease;
+    user-select: none;
+    font-size: 1.2em;
+}
+
+.magic-wand:hover {
+    transform: rotate(15deg) scale(1.1);
+}
+
+.magic-wand:active {
+    transform: rotate(-15deg) scale(0.95);
+}
+
+/* Money Signs Animation */
+.money-signs {
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.2s ease;
+    user-select: none;
+    color: #4ade80;
+    font-weight: 700;
+}
+
+.money-signs:hover {
+    transform: scale(1.15);
+    color: #22c55e;
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+}
+
+.money-signs:active {
+    transform: scale(0.9);
+}
+
+/* Spark Animation */
+.spark {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.5rem;
+    z-index: 9999;
+    animation: sparkFloat 1s ease-out forwards;
+}
+
+@keyframes sparkFloat {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0) rotate(360deg);
+    }
+}

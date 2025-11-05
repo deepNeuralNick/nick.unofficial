@@ -112,6 +112,95 @@ function handleSubmit(event) {
 }
 
 /**
+ * Magic Wand Spark Animation
+ */
+function createSparks(event) {
+    const sparkEmojis = ['✨', '⭐', '💫', '🌟', '✦', '★', '☆'];
+    const numSparks = 12;
+    
+    // Get the click position
+    const x = event.clientX;
+    const y = event.clientY;
+    
+    // Create multiple sparks
+    for (let i = 0; i < numSparks; i++) {
+        const spark = document.createElement('div');
+        spark.className = 'spark';
+        spark.textContent = sparkEmojis[Math.floor(Math.random() * sparkEmojis.length)];
+        
+        // Random direction
+        const angle = (Math.PI * 2 * i) / numSparks;
+        const velocity = 50 + Math.random() * 100;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+        
+        spark.style.left = x + 'px';
+        spark.style.top = y + 'px';
+        spark.style.setProperty('--tx', tx + 'px');
+        spark.style.setProperty('--ty', ty + 'px');
+        
+        document.body.appendChild(spark);
+        
+        // Remove spark after animation
+        setTimeout(() => {
+            spark.remove();
+        }, 1000);
+    }
+    
+    // Add a little shake to the wand
+    const wand = event.target;
+    wand.style.animation = 'none';
+    setTimeout(() => {
+        wand.style.animation = '';
+    }, 10);
+}
+
+/**
+ * Money Signs Green Spark Animation
+ */
+function createMoneySparks(event) {
+    const moneyEmojis = ['💵', '💸', '💰', '💲', '🤑',];
+    const numSparks = 15;
+    
+    // Get the click position
+    const x = event.clientX;
+    const y = event.clientY;
+    
+    // Create multiple money sparks
+    for (let i = 0; i < numSparks; i++) {
+        const spark = document.createElement('div');
+        spark.className = 'spark';
+        spark.textContent = moneyEmojis[Math.floor(Math.random() * moneyEmojis.length)];
+        
+        // Random direction with upward bias (money flies up!)
+        const angle = (Math.PI * 2 * i) / numSparks - Math.PI / 2;
+        const velocity = 60 + Math.random() * 120;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity - 30; // Upward bias
+        
+        spark.style.left = x + 'px';
+        spark.style.top = y + 'px';
+        spark.style.setProperty('--tx', tx + 'px');
+        spark.style.setProperty('--ty', ty + 'px');
+        spark.style.filter = 'hue-rotate(90deg) brightness(1.2)';
+        
+        document.body.appendChild(spark);
+        
+        // Remove spark after animation
+        setTimeout(() => {
+            spark.remove();
+        }, 1000);
+    }
+    
+    // Add bounce effect to money signs
+    const money = event.target;
+    money.style.animation = 'none';
+    setTimeout(() => {
+        money.style.animation = '';
+    }, 10);
+}
+
+/**
  * Speaking Section Functions
  */
 function handleImageUpload(event, index) {
@@ -288,3 +377,5 @@ window.handleImageUpload = handleImageUpload;
 window.addSpeakingItem = addSpeakingItem;
 window.openArticle = openArticle;
 window.closeArticle = closeArticle;
+window.createSparks = createSparks;
+window.createMoneySparks = createMoneySparks;
