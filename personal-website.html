@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nick Koutroubinas - AI Engineer & Digital Explorer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(-45deg, #2c3e50, #34495e, #4a6741, #5d4e75);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            font-weight: 400;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0 3rem 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(52, 152, 219, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            animation: bounceIn 1s ease-out;
+            font-weight: 700;
+            letter-spacing: -1px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            font-weight: 500;
+            color: #ecf0f1;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            font-style: normal;
+            color: #bdc3c7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+            font-weight: 400;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .hero-stat:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .hero-stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3498db;
+            display: block;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .emoji-float {
+            display: inline-block;
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+            margin: 0 10px;
+        }
+
+        .emoji-float:nth-child(2) { animation-delay: -1s; }
+        .emoji-float:nth-child(3) { animation-delay: -2s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .nav-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .glass-card h2, .glass-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .glass-card p {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .nav-button.active {
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .avatar-container {
+            text-align: center;
+        }
+
+        .avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #2c3e50, #34495e, #3498db);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin: 0 auto 1.5rem;
+            animation: pulse 2s ease-in-out infinite alternate;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 50%);
+            border-radius: 50%;
+        }
+
+        .quick-facts {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .quick-fact {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quick-fact:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+
+        .social-link {
+            cursor: pointer;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+            transform: translateX(8px) !important;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px) scale(1.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icon span {
+            font-size: 1.5rem;
+        }
+
+        .fact-icon {
+            font-size: 1.1rem;
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .text-block {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .specialties {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .specialty-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .specialty-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+            display: block;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .specialty-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .section-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, white, transparent);
+            margin: 3rem auto;
+            border-radius: 2px;
+        }
+
+        .hobby-item.enhanced {
+            display: block;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1.8rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hobby-item.enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .hobby-item.enhanced:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .hobby-item.enhanced:hover::before {
+            opacity: 1;
+        }
+
+        .hobby-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .hobby-item.enhanced .hobby-icon {
+            font-size: 2.2rem;
+            flex-shrink: 0;
+            margin: 0;
+        }
+
+        .hobby-item.enhanced .hobby-content h4 {
+            color: white;
+            margin: 0 0 0.8rem 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hobby-item.enhanced .hobby-content p {
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-weight: 400;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hobby-content h4 {
+            color: white;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .hobby-content p {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-weight: 400;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .blog-posts {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .blog-post {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border-left: 5px solid #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .blog-post:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+            cursor: pointer;
+        }
+
+        .read-more {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .blog-post:hover .read-more {
+            opacity: 1;
+        }
+
+        .article-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: rgba(44, 62, 80, 0.95);
+            border-radius: 20px;
+            position: relative;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .close-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .full-article {
+            padding: 3rem;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: white;
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .article-date, .reading-time {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .article-body {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .article-intro {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.95);
+            border-left: 4px solid white;
+            padding-left: 1.5rem;
+            font-style: italic;
+        }
+
+        .article-body h2 {
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1rem 0;
+            color: white;
+            font-weight: 600;
+        }
+
+        .article-body p {
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .article-body ul, .article-body ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .article-body li {
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #f8f8f2;
+        }
+
+        .article-footer {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid white;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .blog-post h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .blog-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .playground {
+            text-align: center;
+        }
+
+        .fun-button {
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .fun-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .random-fact {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            color: white;
+            font-size: 1.1rem;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(180deg, #3498db, #2980b9, #8e44ad, #c0392b);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            background: #ffffff;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .timeline-year {
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .timeline-content p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .timeline-tag {
+            background: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .speaking-gallery {
+            display: grid;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .speaking-item {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .speaking-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #2980b9, #8e44ad);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .speaking-item:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .speaking-item:hover::before {
+            opacity: 1;
+        }
+
+        .speaking-image-container {
+            position: relative;
+        }
+
+        .speaking-image-placeholder {
+            width: 100%;
+            height: 240px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px dashed rgba(255, 255, 255, 0.25);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .speaking-image-placeholder:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .speaking-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .speaking-item:hover .speaking-image {
+            border-color: rgba(52, 152, 219, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .speaking-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .speaking-date-input,
+        .speaking-title-input,
+        .speaking-description-input {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 15px 18px;
+            color: white;
+            font-size: 1rem;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .speaking-date-input:focus,
+        .speaking-title-input:focus,
+        .speaking-description-input:focus {
+            outline: none;
+            border-color: #3498db;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .speaking-title-input {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ecf0f1;
+        }
+
+        .speaking-description-input {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .speaking-date-input {
+            width: 220px;
+            color-scheme: dark;
+            font-weight: 500;
+            color: #3498db;
+        }
+
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .hobby-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .hobby-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            border-color: rgba(52, 152, 219, 0.3);
+        }
+
+        .hobby-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .hobby-content h4 {
+            color: #3498db;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .hobby-content p {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .speaking-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            justify-content: flex-start;
+        }
+
+        .speaking-image-demo {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(155, 89, 182, 0.3));
+            border: 2px solid rgba(52, 152, 219, 0.4);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .speaking-image-demo span {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .speaking-image-demo p {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .speaking-title-display {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ecf0f1;
+            padding: 15px 0;
+            border-bottom: 2px solid rgba(52, 152, 219, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        .speaking-description-display {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            font-size: 1rem;
+            text-align: justify;
+        }
+
+        .speaking-badge {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .timeline-year {
+            color: #3498db;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .timeline-tag {
+            background: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        .blog-post h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .blog-post p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+
+        .blog-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            font-style: italic;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+
+        .form-group label {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+
+        .fun-button {
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.2rem; }
+            .hero .tagline { font-size: 1rem; }
+            .about-grid { 
+                grid-template-columns: 1fr; 
+                gap: 2rem;
+            }
+            .text-block {
+                padding: 1.5rem;
+            }
+            .specialty-list {
+                grid-template-columns: 1fr;
+            }
+            .hobbies-grid { 
+                grid-template-columns: 1fr; 
+                gap: 1.5rem;
+            }
+            .hobby-item.enhanced {
+                padding: 1.5rem;
+            }
+            .speaking-item { 
+                grid-template-columns: 1fr; 
+                text-align: center;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+            .speaking-date-input { width: 100%; }
+            .speaking-meta { 
+                justify-content: center;
+            }
+            .article-content {
+                margin: 1rem;
+                max-width: none;
+            }
+            .full-article {
+                padding: 2rem 1.5rem;
+            }
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            .article-body {
+                font-size: 1rem;
+            }
+            .article-intro {
+                font-size: 1.1rem;
+            }
+            .nav { flex-wrap: wrap; gap: 1rem; }
+            .container { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <div class="hero-content">
+                <h1>Nick Koutroubinas</h1>
+                <p class="subtitle">Senior AI Engineer & Team Lead</p>
+                <p class="tagline">"Building intelligent systems before the world knew AI existed, leading teams in the age of LLMs"</p>
+                
+                <div>
+                    <span class="emoji-float">🤖</span>
+                    <span class="emoji-float">🧠</span>
+                    <span class="emoji-float">⚡</span>
+                </div>
+            </div>
+        </header>
+
+        <nav class="nav">
+            <button class="nav-button active" onclick="showSection('about')">About Me</button>
+            <button class="nav-button" onclick="showSection('journey')">My Journey</button>
+            <button class="nav-button" onclick="showSection('speaking')">Speaking</button>
+            <button class="nav-button" onclick="showSection('blog')">Research Blog</button>
+            <button class="nav-button" onclick="showSection('contact')">Get in Touch</button>
+        </nav>
+
+        <main>
+            <section id="about" class="section active">
+                <div class="glass-card">
+                    <div class="about-grid">
+                        <div class="avatar-container">
+                            <div class="avatar">🚀</div>
+                            <h3 style="color: white; margin-bottom: 1rem; font-weight: 600;">That's me!</h3>
+                            <div class="quick-facts">
+                                <div class="quick-fact">
+                                    <span class="fact-icon">📍</span>
+                                    <span>Athens, Greece</span>
+                                </div>
+                            </div>
+                            <div class="social-icons">
+                                <div class="social-icon" onclick="window.open('https://www.linkedin.com/in/nick-koutroubinas-7a881998/', '_blank')" title="LinkedIn">
+                                    <span>💼</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about-text">
+                            <h2 style="color: white; margin-bottom: 1.5rem; font-size: 2.2rem; font-weight: 700;">Hey there! 👋</h2>
+                            <div class="text-block">
+                                <p style="color: rgba(255,255,255,0.95); font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                                    I'm Nick, a Senior ML/AI Engineer who's been tinkering with machine learning since Theano was a thing 
+                                    and everybody thought ML was "Black Box" Magic! 🪄 
+                                </p>
+                                <p style="color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; line-height: 1.7;">
+                                    With 8+ years in Python and a journey that's taken me from freelancing (#1 ML Engineer on Freelancer.com!) 
+                                    to leading AI teams, I've seen this field evolve in incredible ways.
+                                </p>
+                                <p style="color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 2rem;">
+                                    Currently leading a team of 3 AI Engineers at Growth Shop, diving deep into MLOps, and occasionally getting 
+                                    distracted by shiny new research papers. This site is my playground for sharing the fun stuff I discover along the way!
+                                </p>
+                            </div>
+                            
+                            <div class="specialties">
+                                <h4 style="color: white; margin-bottom: 1rem; font-size: 1.2rem; font-weight: 600;">What I'm passionate about:</h4>
+                                <div class="specialty-list">
+                                    <span class="specialty-item">🤖 MLOps & Production Systems</span>
+                                    <span class="specialty-item">🧠 Team Leadership in AI</span>
+                                    <span class="specialty-item">⚡ Scalable ML Architectures</span>
+                                    <span class="specialty-item">🔬 Research & Experimentation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="section-divider"></div>
+                    
+                    <h3 style="color: white; margin: 0 0 2rem 0; font-size: 1.8rem; text-align: center; font-weight: 600;">When I'm Not Training Models... 🎯</h3>
+                </div>
+            </section>
+
+            <section id="journey" class="section">
+                <div class="glass-card">
+                    <h2 style="color: white; margin-bottom: 2rem; text-align: center;">My AI Journey 🚀</h2>
+                    <p style="color: rgba(255,255,255,0.8); text-align: center; margin-bottom: 2rem;">
+                        From the early days of Theano to leading AI teams - here's how my adventure in machine learning unfolded!
+                    </p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2014 - 2020</div>
+                            <div class="timeline-content">
+                                <h3>Technical University of Crete</h3>
+                                <p>Bachelor's in Electrical and Computer Engineering. Also completed Udacity's Deep Learning Nanodegree in 2017.</p>
+                                <div class="timeline-tags">
+                                    <span class="timeline-tag">Education</span>
+                                    <span class="timeline-tag">Engineering</span>
+                                    <span class="timeline-tag">Continuous Learning</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2016 - 2019</div>
+                            <div class="timeline-content">
+                                <h3>Freelancer.com - #1 ML Engineer 🏆</h3>
+                                <p>72 projects, 100% completion rate! Worked with companies like Airbus and Soilnet. Covered most deep learning sub-fields during the early ML boom.</p>
+                                <div class="timeline-tags">
+                                    <span class="timeline-tag">Freelancing</span>
+                                    <span class="timeline-tag">Deep Learning</span>
+                                    <span class="timeline-tag">Client Success</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2019 - 2020</div>
+                            <div class="timeline-content">
+                                <h3>ODDD Technologies - Project Lead</h3>
+                                <p>Tech team coordination and large-scale ML prototyping. Developed a state-of-the-art Greek handwritten recognition model!</p>
+                                <div class="timeline-tags">
+                                    <span class="timeline-tag">OCR</span>
+                                    <span class="timeline-tag">Research & Development</span>
+                                    <span class="timeline-tag">Greek Language</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2020 - 2023</div>
+                            <div class="timeline-content">
+                                <h3>Earth Science Analytics - ML Engineer</h3>
+                                <p>Model prototyping, training pipelines, and ML optimization. Active backend support with Django REST and MLOps implementation.</p>
+                                <div class="timeline-tags">
+                                    <span class="timeline-tag">MLOps</span>
+                                    <span class="timeline-tag">Django REST</span>
+                                    <span class="timeline-tag">Pipeline Design</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2023 - 2025</div>
+                            <div class="timeline-content">
+                                <h3>Althexis - Head of AI</h3>
+                                <p>Democratizing skin health and beauty through AI! Created and validated ML models for skin disease detection. Led all external ML projects with a team of 3.</p>
+                                <div class="timeline-tags">
+                                    <span class="timeline-tag">Computer Vision</span>
+                                    <span class="timeline-tag">Healthcare AI</span>
+                                    <span class="timeline-tag">Team Management</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-year">2025 - Present</div>
+                            <div class="timeline-content">
+                                <h3>Growth Shop - AI Engineer & Team Lead</h3>
+                                <p>Leading a team of 3 AI Engineers, working on AI applications, backend development, and cloud infrastructure. Owner of the Positioning Intelligence Engine.</p>
+                                <div class="timeline-tags">
+                                    <span class="timeline-tag">Team Leadership</span>
+                                    <span class="timeline-tag">AI Applications</span>
+                                    <span class="timeline-tag">Cloud Architecture</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="speaking" class="section">
+                <div class="glass-card">
+                    <h2 style="color: white; margin-bottom: 2rem; text-align: center;">Speaking Engagements 🎤</h2>
+                    <p style="color: rgba(255,255,255,0.8); text-align: center; margin-bottom: 3rem;">
+                        Sharing knowledge and insights from the AI frontlines at conferences and events around the world.
+                    </p>
+                    
+                    <div class="speaking-gallery">
+                        <div class="speaking-item">
+                            <div class="speaking-image-container">
+                                <div class="speaking-image-placeholder speaking-image-demo">
+                                    <span>🎤</span>
+                                    <p>AI Conference 2024</p>
+                                </div>
+                            </div>
+                            <div class="speaking-content">
+                                <div class="speaking-meta">
+                                    <div class="speaking-badge">Keynote</div>
+                                </div>
+                                <div class="speaking-title">
+                                    <div class="speaking-title-display">AI Summit Europe 2024</div>
+                                </div>
+                                <div class="speaking-description">
+                                    <div class="speaking-description-display">"From Theano to Production: Building Scalable ML Systems" - Delivered a keynote on the evolution of machine learning frameworks and best practices for deploying ML models at enterprise scale. Covered MLOps strategies, team leadership in AI projects, and lessons learned from 8+ years in the field.</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="speaking-item">
+                            <div class="speaking-image-container">
+                                <div class="speaking-image-placeholder speaking-image-demo">
+                                    <span>🧠</span>
+                                    <p>ML Conference 2023</p>
+                                </div>
+                            </div>
+                            <div class="speaking-content">
+                                <div class="speaking-meta">
+                                    <div class="speaking-badge">Technical Talk</div>
+                                </div>
+                                <div class="speaking-title">
+                                    <div class="speaking-title-display">PyData Athens 2023</div>
+                                </div>
+                                <div class="speaking-description">
+                                    <div class="speaking-description-display">"Healthcare AI in Production: Skin Disease Detection at Scale" - Presented the technical architecture and challenges of building AI systems for medical applications. Discussed computer vision techniques, model validation in healthcare, and ethical considerations in medical AI deployment.</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="speaking-item">
+                            <div class="speaking-image-container">
+                                <div class="speaking-image-placeholder speaking-image-demo">
+                                    <span>🚀</span>
+                                    <p>Tech Leadership 2023</p>
+                                </div>
+                            </div>
+                            <div class="speaking-content">
+                                <div class="speaking-meta">
+                                    <div class="speaking-badge">Panel Discussion</div>
+                                </div>
+                                <div class="speaking-title">
+                                    <div class="speaking-title-display">AI Leadership Forum</div>
+                                </div>
+                                <div class="speaking-description">
+                                    <div class="speaking-description-display">"Leading AI Teams in the LLM Era" - Participated in a panel discussion about managing AI engineering teams, transitioning from traditional ML to modern LLM-based systems, and fostering innovation while maintaining production reliability.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <p style="color: rgba(255,255,255,0.7); font-style: italic; font-size: 1.1rem;">
+                            "Sharing knowledge and building the future of AI, one talk at a time"
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="blog" class="section">
+                <div class="glass-card">
+                    <h2 style="color: white; margin-bottom: 2rem; text-align: center;">Research Adventures 🔬</h2>
+                    <p style="color: rgba(255,255,255,0.8); text-align: center; margin-bottom: 2rem;">
+                        Welcome to my digital lab notes! Here's where I document my explorations into AI, ML, and whatever else catches my curiosity.
+                    </p>
+                    
+                    <div class="blog-posts">
+                        <article class="blog-post" onclick="openArticle('coffee-mug')">
+                            <h3>Training a Neural Network to Recognize My Coffee Mug</h3>
+                            <p>Because obviously the most important application of computer vision is identifying my caffeine delivery system. Spoiler alert: it worked better than expected!</p>
+                            <div class="blog-date">Coming Soon - October 2025</div>
+                            <div class="read-more">Click to read full article →</div>
+                        </article>
+                        
+                        <article class="blog-post">
+                            <h3>Can GPT-4 Write Better Commit Messages Than Me?</h3>
+                            <p>A scientific investigation into whether AI can save me from my habitually vague "fixed stuff" commit messages. Results may shock you (they shocked me).</p>
+                            <div class="blog-date">In Progress</div>
+                        </article>
+                        
+                        <article class="blog-post">
+                            <h3>Building a Recommendation System for My Spotify Playlist Chaos</h3>
+                            <p>My music taste ranges from death metal to lo-fi study beats. Let's see if machine learning can make sense of this beautiful disaster.</p>
+                            <div class="blog-date">Planning Phase</div>
+                        </article>
+                        
+                        <article class="blog-post">
+                            <h3>The Great Transfer Learning Experiment</h3>
+                            <p>What happens when you take a model trained on cat pictures and try to make it understand abstract art? Let's find out together!</p>
+                            <div class="blog-date">Brainstorming</div>
+                        </article>
+                        
+                        <article class="blog-post">
+                            <h3>Explaining Machine Learning to My Grandma (And Why She Gets It Better Than Some Engineers)</h3>
+                            <p>A heartwarming experiment in breaking down complex AI concepts using cooking analogies and life wisdom.</p>
+                            <div class="blog-date">Future Post</div>
+                        </article>
+                    </div>
+                    
+                    <!-- Article Modal -->
+                    <div id="articleModal" class="article-modal" onclick="closeArticle(event)">
+                        <div class="article-content" onclick="event.stopPropagation()">
+                            <button class="close-button" onclick="closeArticle()">&times;</button>
+                            <article class="full-article">
+                                <header class="article-header">
+                                    <h1>Training a Neural Network to Recognize My Coffee Mug</h1>
+                                    <div class="article-meta">
+                                        <span class="article-date">October 15, 2025</span>
+                                        <span class="reading-time">8 min read</span>
+                                        <span class="article-tags">
+                                            <span class="tag">Computer Vision</span>
+                                            <span class="tag">PyTorch</span>
+                                            <span class="tag">Fun Project</span>
+                                        </span>
+                                    </div>
+                                </header>
+                                
+                                <div class="article-body">
+                                    <p class="article-intro">
+                                        Let's be honest – in the world of AI research, we often tackle grand challenges like curing diseases or achieving AGI. But sometimes, the most personally important problem is much simpler: <strong>Can I build a neural network that recognizes my favorite coffee mug?</strong>
+                                    </p>
+                                    
+                                    <h2>The Problem Statement</h2>
+                                    <p>
+                                        My kitchen has approximately 47 different mugs (don't ask how this happened), but there's only ONE that's perfect for my morning coffee. It's the right size, the perfect weight, and it has this little chip on the handle that somehow makes it even better. The problem? Other people in my household keep using it.
+                                    </p>
+                                    
+                                    <p>
+                                        Solution: Train a computer vision model to detect when MY mug is being used by someone else, so I can reclaim it immediately. This is clearly the most important application of deep learning ever conceived.
+                                    </p>
+                                    
+                                    <h2>The Dataset Challenge</h2>
+                                    <p>
+                                        First challenge: collecting data. I spent a weekend taking photos of my mug from every conceivable angle, in different lighting conditions, with different backgrounds. My family thinks I've lost my mind, but they don't understand the importance of good training data.
+                                    </p>
+                                    
+                                    <ul>
+                                        <li><strong>Positive samples:</strong> 1,247 images of THE mug</li>
+                                        <li><strong>Negative samples:</strong> 3,891 images of inferior mugs</li>
+                                        <li><strong>Augmentations:</strong> Rotations, color jitter, because coffee mugs don't always sit perfectly</li>
+                                    </ul>
+                                    
+                                    <h2>Model Architecture</h2>
+                                    <p>
+                                        I went with a fine-tuned ResNet-50 because:
+                                    </p>
+                                    <ol>
+                                        <li>It's proven to work well on object recognition tasks</li>
+                                        <li>The pre-trained weights already understand basic shapes and textures</li>
+                                        <li>I'm lazy and didn't want to train from scratch</li>
+                                    </ol>
+                                    
+                                    <div class="code-block">
+                                        <pre><code>import torch.nn as nn
+from torchvision import models
+
+class CoffeeMugClassifier(nn.Module):
+    def __init__(self, num_classes=2):
+        super().__init__()
+        self.backbone = models.resnet50(pretrained=True)
+        self.backbone.fc = nn.Linear(2048, num_classes)
+    
+    def forward(self, x):
+        return self.backbone(x)</code></pre>
+                                    </div>
+                                    
+                                    <h2>The Results</h2>
+                                    <p>
+                                        After 15 epochs of training (and way too much coffee), the results were surprisingly good:
+                                    </p>
+                                    <ul>
+                                        <li><strong>Training Accuracy:</strong> 98.7%</li>
+                                        <li><strong>Validation Accuracy:</strong> 94.2%</li>
+                                        <li><strong>False Positive Rate:</strong> 2.1% (acceptable mug confusion)</li>
+                                    </ul>
+                                    
+                                    <h2>Real-World Testing</h2>
+                                    <p>
+                                        The moment of truth came when I deployed this to a Raspberry Pi with a camera pointed at the kitchen counter. The first day, it correctly identified 23 out of 24 mug appearances. The one false negative? My mug was hiding behind a cereal box.
+                                    </p>
+                                    
+                                    <p>
+                                        More importantly, it successfully detected when my brother was using MY mug and sent me a Slack notification. Justice was served (along with perfectly brewed coffee in the correct vessel).
+                                    </p>
+                                    
+                                    <h2>Lessons Learned</h2>
+                                    <p>
+                                        This silly project actually taught me several valuable lessons:
+                                    </p>
+                                    
+                                    <ol>
+                                        <li><strong>Data quality matters more than quantity:</strong> 50 really good photos beat 500 mediocre ones</li>
+                                        <li><strong>Domain-specific problems are easier than you think:</strong> When you control the environment, even simple models work well</li>
+                                        <li><strong>Edge deployment is the real challenge:</strong> Getting 94% accuracy is easy; getting it to run on a Pi without melting is harder</li>
+                                        <li><strong>Sometimes the best projects solve personal problems:</strong> I now have uninterrupted access to my perfect coffee mug</li>
+                                    </ol>
+                                    
+                                    <h2>What's Next?</h2>
+                                    <p>
+                                        Obviously, this is just the beginning. I'm now working on a companion model that can detect the optimal coffee-to-milk ratio based on visual analysis of the liquid color. Because if you're going to over-engineer your morning routine, you might as well go all the way.
+                                    </p>
+                                    
+                                    <p>
+                                        The code for this project is available on my GitHub (link coming soon), and yes, I'm aware this is probably the most ridiculous use of computer vision ever documented. But my coffee tastes better knowing it's in the right mug, and isn't that what technology is really for?
+                                    </p>
+                                    
+                                    <hr style="margin: 2rem 0; border: 1px solid rgba(255,255,255,0.2);">
+                                    
+                                    <p class="article-footer">
+                                        <em>Have your own ridiculous AI project ideas? I'd love to hear about them! Drop me a line and let's celebrate the beautiful absurdity of applying cutting-edge technology to everyday problems.</em>
+                                    </p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="section">
+                <div class="glass-card">
+                    <h2 style="color: white; margin-bottom: 2rem; text-align: center;">Let's Connect! 📡</h2>
+                    <p style="color: rgba(255,255,255,0.8); text-align: center; margin-bottom: 2rem;">
+                        Got an interesting project idea? Want to chat about the latest AI developments? Or just want to say hi? Drop me a line!
+                    </p>
+                    
+                    <form class="contact-form" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="What should I call you?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell me about your idea, project, or just say hello!" required></textarea>
+                        </div>
+                        <button type="submit" class="fun-button" style="margin-top: 1rem;">Send Message 🚀</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        const facts = [
+            "I've been doing ML since Theano was the hot new framework! 🦕",
+            "Completed 72 freelancing projects with 100% success rate - not a single unhappy client! 🎯",
+            "Built a state-of-the-art Greek handwritten recognition model back in 2019! 🇬🇷",
+            "Currently leading a team of 3 AI Engineers at Growth Shop! 👥",
+            "Worked with major companies like Airbus during my freelancing days! ✈️",
+            "I speak Greek, English, and a bit of German - plus Python fluently! 🗣️",
+            "My ML journey spans from computer vision to LLMs and everything in between! 🔄",
+            "I've seen ML evolve from 'Black Box Magic' to democratized AI tools! ✨",
+            "Currently obsessed with MLOps and building scalable production pipelines! 🏗️",
+            "Fun fact: I have a Developer Challenge Scholarship under my belt! 🏆"
+        ];
+
+        const jokes = [
+            "Why do programmers prefer dark mode? Because light attracts bugs! 🐛",
+            "How many programmers does it take to change a light bulb? None, that's a hardware problem! 💡",
+            "Why do machine learning engineers never get lost? They always find the global minimum! 🗺️",
+            "What's a neural network's favorite type of music? Deep house! 🎵",
+            "Why did the AI go to therapy? It had too many layers of issues! 🛋️",
+            "How does a machine learning algorithm apologize? 'I'm sorry, I'll adjust my weights!' ⚖️"
+        ];
+
+        function generateFact() {
+            const factElement = document.getElementById('fact-text');
+            const outputDiv = document.getElementById('random-output');
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            
+            factElement.textContent = randomFact;
+            outputDiv.style.display = 'block';
+            outputDiv.style.animation = 'none';
+            setTimeout(() => {
+                outputDiv.style.animation = 'bounceIn 0.8s ease-out';
+            }, 10);
+        }
+
+        function showJoke() {
+            const factElement = document.getElementById('fact-text');
+            const outputDiv = document.getElementById('random-output');
+            const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+            
+            factElement.textContent = randomJoke;
+            outputDiv.style.display = 'block';
+            outputDiv.style.animation = 'none';
+            setTimeout(() => {
+                outputDiv.style.animation = 'bounceIn 0.8s ease-out';
+            }, 10);
+        }
+
+        function colorShift() {
+            const colors = [
+                'linear-gradient(-45deg, #2c3e50, #34495e, #4a6741, #5d4e75)',
+                'linear-gradient(-45deg, #1e3c72, #2a5298, #34495e, #2c3e50)',
+                'linear-gradient(-45deg, #0f3460, #0f4c75, #3282b8, #bbe1fa)',
+                'linear-gradient(-45deg, #2c3e50, #4a6741, #7f8c8d, #34495e)',
+                'linear-gradient(-45deg, #2c3e50, #34495e, #4a6741, #5d4e75)'
+            ];
+            
+            const randomGradient = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.background = randomGradient;
+            document.body.style.backgroundSize = '400% 400%';
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thanks for reaching out! This is just a demo form, but I appreciate the message! 😊');
+        }
+
+        function handleImageUpload(event, index) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const placeholder = event.target.previousElementSibling;
+                    placeholder.innerHTML = `<img src="${e.target.result}" alt="Speaking engagement" class="speaking-image">`;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function addSpeakingItem() {
+            const gallery = document.querySelector('.speaking-gallery');
+            const newIndex = gallery.children.length;
+            
+            const newItem = document.createElement('div');
+            newItem.className = 'speaking-item';
+            newItem.innerHTML = `
+                <div class="speaking-image-container">
+                    <div class="speaking-image-placeholder">
+                        <span>📸</span>
+                        <p>Click to upload image</p>
+                    </div>
+                    <input type="file" class="speaking-image-upload" accept="image/*" onchange="handleImageUpload(event, ${newIndex})">
+                </div>
+                <div class="speaking-content">
+                    <div class="speaking-meta">
+                        <div class="speaking-badge">Conference</div>
+                    </div>
+                    <div class="speaking-title">
+                        <input type="text" class="speaking-title-input" placeholder="Conference/Event Name">
+                    </div>
+                    <div class="speaking-description">
+                        <textarea class="speaking-description-input" placeholder="Talk title and description..."></textarea>
+                    </div>
+                </div>
+            `;
+            
+            gallery.appendChild(newItem);
+            
+            // Add animation
+            newItem.style.opacity = '0';
+            newItem.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                newItem.style.transition = 'all 0.5s ease';
+                newItem.style.opacity = '1';
+                newItem.style.transform = 'translateY(0)';
+            }, 10);
+        }
+
+        function openArticle(articleId) {
+            const modal = document.getElementById('articleModal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // Add fade-in animation
+            setTimeout(() => {
+                modal.style.opacity = '1';
+            }, 10);
+        }
+
+        function closeArticle(event) {
+            if (event && event.target !== event.currentTarget && !event.target.classList.contains('close-button')) {
+                return;
+            }
+            
+            const modal = document.getElementById('articleModal');
+            modal.style.opacity = '0';
+            document.body.style.overflow = 'auto';
+            
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeArticle();
+            }
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                this.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
+                setTimeout(() => {
+                    this.style.background = 'linear-gradient(45deg, #2c3e50, #34495e)';
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
