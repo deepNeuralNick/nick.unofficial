@@ -373,7 +373,7 @@
                         Got an interesting project idea? Want to chat about the latest AI developments? Or just want to say hi? Drop me a line!
                     </p>
                     
-                    <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <form class="contact-form" action="https://formspree.io/f/xbljeddb" method="POST">
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" placeholder="What should I call you?" required>
@@ -386,6 +386,9 @@
                             <label for="message">Message</label>
                             <textarea id="message" name="message" rows="5" placeholder="Tell me about your idea, project, or just say hello!" required></textarea>
                         </div>
+                        <!-- Hidden field to specify the recipient -->
+                        <input type="hidden" name="_to" value="nickos.mlmind@gmail.com">
+                        <input type="hidden" name="_subject" value="New contact from website!">
                         <button type="submit" class="fun-button" style="margin-top: 1rem;">Send Message 🚀</button>
                     </form>
                 </div>

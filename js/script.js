@@ -93,7 +93,22 @@ function colorShift() {
  */
 function handleSubmit(event) {
     event.preventDefault();
-    alert('Thanks for reaching out! This is just a demo form, but I appreciate the message! 😊');
+    
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const message = form.message.value;
+    
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`Website Contact from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    const mailtoLink = `mailto:nickos.mlmind@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Open default email client
+    window.location.href = mailtoLink;
+    
+    // Show confirmation message
+    alert('Opening your email client... If it doesn\'t open automatically, please email me directly at nickos.mlmind@gmail.com');
 }
 
 /**
